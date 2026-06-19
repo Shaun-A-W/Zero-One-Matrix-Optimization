@@ -1,0 +1,221 @@
+# A = rand([0,1], n, n)
+
+# A = [1 1 1;
+# 	 1 1 0;
+# 	 0 1 1]
+
+# println("Matrix A:")
+# display(A)
+# print("Determinant of A: ")
+# de = det(A)
+# println(de)
+# println("Gradient of A:")
+# gde_A = matrix_gradient(A)
+# display(gde_A)
+
+# move, delt = best_change(A)
+# print("Best Move: ")
+# println(move)
+# print("Best Change: ")
+# println(delt)
+
+
+# for i in 1:t
+# 	if !do_best(A, tabu_list, tabu_max)
+# 		println("Stopping loop at move $i")
+# 		println("Gradient of Changed A:")
+# 		display(matrix_gradient(A))
+# 		break
+# 	end
+# end
+
+# println("Changed Matrix A:")
+# display(A)
+# print("Determinant of Changed A: ")
+# de = det(A)
+# println(de)
+
+
+# sub = matr[1:3 .!= 1, 1:3 .!= 1]
+# display(sub)
+
+
+Highest Climb Loop: 107
+Best Matrix Found:
+20×20 Matrix{Int64}:
+ 1  1  0  0  1  1  0  0  1  0  1  1  1  0  0  0  1  1  0  1
+ 0  1  1  1  0  1  0  1  0  0  1  1  0  1  0  0  1  0  1  1
+ 0  1  1  0  1  0  1  0  0  0  0  1  0  0  1  0  0  1  1  0
+ 1  1  1  0  0  0  1  1  0  1  1  1  1  1  0  1  1  1  0  0
+ 0  0  1  1  1  1  0  0  0  1  1  0  0  0  0  1  1  1  0  0
+ 1  0  0  1  0  1  1  1  0  0  0  0  0  0  1  0  1  1  0  1
+ 1  0  1  1  0  1  1  0  1  1  1  1  1  0  1  0  0  0  1  0
+ 1  1  1  1  1  0  0  1  0  1  0  0  1  0  0  0  0  0  0  1
+ 0  1  0  0  1  1  1  1  1  1  1  0  0  1  1  0  0  0  0  0
+ 0  0  1  0  1  1  0  1  1  0  0  1  1  1  1  1  1  0  0  0
+ 0  0  1  1  0  0  1  0  1  0  1  0  1  1  1  0  0  1  0  1
+ 1  1  0  1  1  0  0  0  0  0  1  0  1  1  1  1  1  0  1  0
+ 1  0  0  1  1  1  1  0  0  0  0  1  0  1  0  1  0  0  0  1
+ 1  1  1  0  0  1  0  0  1  1  0  0  0  1  1  1  0  1  1  1
+ 1  0  1  0  1  0  1  1  1  0  1  0  0  0  0  1  1  0  1  1
+ 0  0  0  0  1  1  1  0  0  1  0  0  1  1  0  0  1  0  1  1
+ 1  0  0  1  1  0  0  1  1  1  0  1  0  1  0  0  1  1  1  0
+ 0  1  0  1  0  1  1  1  1  0  0  0  1  0  0  1  0  1  1  0
+ 0  0  0  0  1  0  0  1  0  1  1  1  1  0  1  1  0  1  1  1
+ 0  1  0  1  0  0  1  0  1  1  0  1  0  0  1  1  1  0  0  1
+Determinant Value: 40,678,500
+Time taken: 940.52 seconds
+
+
+
+Highest Climb Loop: 110
+Best Matrix Found:
+20×20 Matrix{Int64}:
+ 0  1  0  0  0  0  0  1  1  1  0  0  1  0  1  1  1  0  1  1
+ 1  0  0  1  0  0  0  0  1  0  1  1  1  1  1  1  1  0  0  0
+ 1  0  0  1  1  0  0  0  0  1  0  0  0  0  0  1  1  1  0  1
+ 0  0  0  0  1  1  1  1  0  1  1  1  1  0  1  1  0  1  0  0
+ 1  1  0  1  1  0  0  0  1  1  1  0  1  1  1  0  0  1  1  0
+ 1  1  0  0  1  1  1  0  1  0  0  1  0  0  1  0  1  0  0  1
+ 1  1  1  1  0  1  0  1  0  1  0  1  1  0  0  0  0  0  0  0
+ 1  1  0  0  0  0  1  0  0  0  0  1  1  1  0  1  0  1  1  1
+ 0  0  1  1  0  1  1  0  0  0  0  0  1  0  1  0  1  1  1  0
+ 1  0  1  0  1  0  1  1  0  1  0  0  0  1  1  1  1  0  1  0
+ 0  1  0  1  1  1  0  1  1  0  0  1  0  1  0  1  1  1  1  0
+ 0  1  0  1  1  0  1  1  0  0  1  0  1  1  0  0  1  0  0  1
+ 0  0  1  1  0  0  1  1  1  1  0  1  0  1  1  0  0  1  0  1
+ 0  0  0  0  0  1  0  0  0  1  1  1  0  1  0  0  1  0  1  1
+ 0  1  1  0  0  0  1  0  1  1  1  0  0  0  0  1  1  1  0  0
+ 1  0  0  1  0  1  1  1  1  0  1  0  0  0  0  1  0  0  1  1
+ 1  0  1  0  1  0  0  1  1  0  1  1  1  0  0  0  1  1  1  1
+ 0  0  1  0  1  1  0  0  1  1  0  0  1  1  0  1  0  0  0  1
+ 0  1  1  1  1  0  0  0  0  0  1  1  0  0  1  1  0  0  1  1
+ 1  1  1  0  0  1  0  1  0  0  1  0  0  1  1  1  0  1  0  1
+Determinant Value: 42,006,250
+Time taken: 926.14 seconds
+
+Highest Climb Loop: 10000
+Best Matrix Found:
+20×20 Matrix{Int64}:
+ 1  1  0  0  1  1  1  0  0  0  1  0  0  1  0  1  1  0  1  1
+ 1  1  0  1  0  0  1  1  1  0  0  1  0  0  1  0  1  0  0  1
+ 0  1  1  1  1  0  0  1  0  1  0  0  0  1  0  0  1  1  1  1
+ 0  1  1  0  0  1  0  0  1  1  0  0  1  0  1  1  1  1  0  1
+ 0  1  1  0  0  0  1  1  0  0  1  1  0  1  1  1  0  1  0  0
+ 1  1  0  1  1  0  0  0  1  0  0  0  1  1  1  1  0  1  1  0
+ 1  1  1  1  1  1  0  1  0  1  0  1  1  0  0  1  0  0  0  0
+ 0  1  0  0  1  1  0  1  1  0  1  1  1  0  0  0  1  1  1  0
+ 1  0  0  0  1  0  1  1  0  1  1  0  1  0  1  0  0  1  0  1
+ 1  1  1  0  0  0  0  0  1  1  1  1  1  1  0  0  0  0  1  1
+ 0  1  0  1  0  1  1  0  0  1  0  1  1  0  0  1  0  1  1  1
+ 1  0  1  0  0  1  1  1  0  0  0  0  1  1  1  0  1  0  1  0
+ 0  0  1  1  1  1  1  0  1  0  0  1  1  1  0  0  0  1  0  1
+ 1  0  0  1  0  1  0  0  0  1  1  1  0  1  1  0  1  1  0  0
+ 1  0  1  1  0  1  0  1  1  0  1  0  0  0  0  1  0  1  1  1
+ 1  0  1  0  1  0  1  0  1  1  0  1  0  0  0  1  1  1  1  0
+ 0  0  1  1  1  0  0  0  0  0  1  1  1  0  1  1  1  0  1  1
+ 0  0  0  1  0  0  1  1  1  1  1  0  1  1  0  1  1  0  0  0
+ 0  0  0  0  1  1  0  1  1  1  0  1  0  1  1  1  0  0  1  1
+ 0  1  1  1  1  1  1  0  1  1  1  0  0  0  1  0  0  0  1  0
+Determinant Value: 52,734,375
+Time taken: 148.71 seconds
+
+
+Starting new search on a 20 x 20 Matrix.
+Trial 100 Completed. Current Max Det: 49218750
+Trial 200 Completed. Current Max Det: 49609375
+Trial 300 Completed. Current Max Det: 49609375
+Trial 400 Completed. Current Max Det: 49609375
+Trial 500 Completed. Current Max Det: 49609375
+Trial 600 Completed. Current Max Det: 49609375
+Trial 700 Completed. Current Max Det: 49609375
+Trial 800 Completed. Current Max Det: 56640625
+Trial 900 Completed. Current Max Det: 56640625
+Trial 1000 Completed. Current Max Det: 56640625
+Highest Climb Loop: 100000
+Best Matrix Found:
+20×20 Matrix{Int64}:
+ 1  1  1  1  0  0  1  0  0  1  0  1  0  0  1  1  0  1  0  0
+ 0  1  0  0  1  1  0  0  1  1  1  0  1  0  1  1  0  1  0  0
+ 1  0  1  0  1  1  1  0  0  1  1  1  1  0  0  0  0  0  1  1
+ 0  1  1  0  0  1  0  1  1  1  0  1  0  1  0  0  0  1  1  1
+ 0  1  1  1  1  0  0  0  0  0  1  0  0  1  1  1  0  0  1  1
+ 0  0  0  1  1  0  1  1  1  0  0  1  1  0  0  1  0  1  1  1
+ 1  1  0  1  1  0  0  1  0  1  1  0  0  0  0  0  1  1  1  0
+ 1  1  1  1  1  1  1  1  1  0  0  0  1  1  0  0  0  0  0  0
+ 0  0  1  1  0  1  0  1  0  1  0  0  1  0  1  1  1  0  1  0
+ 0  0  1  0  1  1  1  1  0  0  1  1  0  1  0  1  1  1  0  0
+ 1  0  1  0  1  0  0  0  1  0  0  1  1  1  1  0  1  1  1  0
+ 0  1  0  1  0  1  1  0  1  0  1  1  0  0  1  0  1  0  1  0
+ 0  0  1  1  0  0  1  0  1  1  1  0  1  1  0  0  1  1  0  1
+ 1  0  0  1  0  1  0  1  0  0  1  1  1  1  1  0  0  1  0  1
+ 1  0  0  1  1  1  0  0  1  1  0  1  0  1  0  1  1  0  0  1
+ 1  0  1  0  1  1  1  1  1  0  0  0  0  0  1  0  1  1  0  1
+ 1  0  0  0  0  0  1  1  1  1  1  0  0  1  1  1  0  0  1  0
+ 1  1  0  0  0  1  1  0  0  0  0  0  1  1  0  1  1  1  1  1
+ 1  1  1  0  0  0  0  1  1  0  1  1  1  0  0  1  1  0  0  1
+ 0  1  0  0  1  0  1  1  0  1  0  1  1  1  1  0  1  0  0  1
+Determinant Value: 56,640,625
+Time taken: 1315.92 seconds
+
+
+100 Random Targets
+n = 1 -> n = 20
+Simulating random targetting on 1 by 1 matrix.
+Average moves: 1.0
+Fails: 0
+Simulating random targetting on 2 by 2 matrix.
+Average moves: 1.06
+Fails: 0
+Simulating random targetting on 3 by 3 matrix.
+Average moves: 2.14
+Fails: 0
+Simulating random targetting on 4 by 4 matrix.
+Average moves: 2.4
+Fails: 0
+Simulating random targetting on 5 by 5 matrix.
+Average moves: 2.97
+Fails: 0
+Simulating random targetting on 6 by 6 matrix.
+Average moves: 4.08
+Fails: 0
+Simulating random targetting on 7 by 7 matrix.
+Average moves: 5.041666666666667
+Fails: 28
+Simulating random targetting on 8 by 8 matrix.
+Average moves: 7.098765432098766
+Fails: 19
+Simulating random targetting on 9 by 9 matrix.
+Average moves: 8.50632911392405
+Fails: 21
+Simulating random targetting on 10 by 10 matrix.
+Average moves: 10.204301075268818
+Fails: 7
+Simulating random targetting on 11 by 11 matrix.
+Average moves: 14.156862745098039
+Fails: 49
+Simulating random targetting on 12 by 12 matrix.
+Average moves: 14.842105263157896
+Fails: 43
+Simulating random targetting on 13 by 13 matrix.
+Average moves: 19.72972972972973
+Fails: 26
+Simulating random targetting on 14 by 14 matrix.
+Average moves: 22.191011235955056
+Fails: 11
+Simulating random targetting on 15 by 15 matrix.
+Average moves: 25.5
+Fails: 36
+Simulating random targetting on 16 by 16 matrix.
+Average moves: 29.104477611940297
+Fails: 33
+Simulating random targetting on 17 by 17 matrix.
+Average moves: 30.52238805970149
+Fails: 33
+Simulating random targetting on 18 by 18 matrix.
+Average moves: 38.25714285714286
+Fails: 30
+Simulating random targetting on 19 by 19 matrix.
+Average moves: 38.61764705882353
+Fails: 66
+Simulating random targetting on 20 by 20 matrix.

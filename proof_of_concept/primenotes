@@ -1,0 +1,209 @@
+
+For 15x15 case. Primes up to 131072.
+12251 primes listed
+Results:
+Starting primes target search...
+Determinant 44281 failed to find.
+Determinant 45293 failed to find.
+Determinant 46229 failed to find.
+Determinant 47791 failed to find.
+Determinant 47939 failed to find.
+Determinant 48539 failed to find.
+Determinant 49033 failed to find.
+Determinant 49177 failed to find.
+Determinant 50231 failed to find.
+Determinant 50333 failed to find.
+Determinant 50773 failed to find.
+Determinant 50929 failed to find.
+Determinant 51829 failed to find.
+Determinant 52021 failed to find.
+......
+continues...
+
+Interestingly, prime fails at 15x15 start at 44281 (position 4611)
+14x14 max = 25515
+
+Continuing this, prime fails at 11x11 start at 937 (position 159)
+10x10 max = 320
+
+All 11x11 prime fails are successful in 12x12
+All nxn prime fails are successful in n+1 x n+1 ... ?
+
+12x12 fails start at 2693 (position 392)
+
+
+Analysis of first prime failure... n = 1 -> n = 20...
+
+Starting prime analysis for 1 x 1 case...
+Starting prime analysis for 2 x 2 case...
+Starting prime analysis for 3 x 3 case...
+Starting prime analysis for 4 x 4 case...
+Starting prime analysis for 5 x 5 case...
+Starting prime analysis for 6 x 6 case...
+Starting prime analysis for 7 x 7 case...
+Failure at prime determinant: 19.
+Prime position = 8.
+Starting prime analysis for 8 x 8 case...
+Failure at prime determinant: 41.
+Prime position = 13.
+Starting prime analysis for 9 x 9 case...
+Failure at prime determinant: 103.
+Prime position = 27.
+Starting prime analysis for 10 x 10 case...
+Failure at prime determinant: 269.
+Prime position = 57.
+Starting prime analysis for 11 x 11 case...
+Failure at prime determinant: 739.
+Prime position = 131.
+Starting prime analysis for 12 x 12 case...
+Failure at prime determinant: 2203.
+Prime position = 328.
+Starting prime analysis for 13 x 13 case...
+Failure at prime determinant: 6199.
+Prime position = 806.
+Starting prime analysis for 14 x 14 case...
+Failure at prime determinant: 17761.
+Prime position = 2039.
+Starting prime analysis for 15 x 15 case...
+Failure at prime determinant: 41813.
+Prime position = 4372.
+Starting prime analysis for 16 x 16 case...
+Failure at prime determinant: 67957.
+Prime position = 6769.
+Starting prime analysis for 17 x 17 case...
+Failure at prime determinant: 97861.
+Prime position = 9407.
+Starting prime analysis for 18 x 18 case...
+Failure at prime determinant: 112543.
+Prime position = 10665.
+Starting prime analysis for 19 x 19 case...
+Failure at prime determinant: 101837.
+Prime position = 9751.
+Starting prime analysis for 20 x 20 case...
+Failure at prime determinant: 106013.
+Prime position = 10107.
+Dict{Int64, Tuple}(16 => ("Prime: 67957", "Position: 6769"), 20 => ("Prime: 106013", "Position: 10107"), 12 => ("Prime: 2203", "Position: 328"), 8 => ("Prime: 41", "Position: 13"), 17 => ("Prime: 97861", "Position: 9407"), 19 => ("Prime: 101837", "Position: 9751"), 11 => ("Prime: 739", "Position: 131"), 9 => ("Prime: 103", "Position: 27"), 14 => ("Prime: 17761", "Position: 2039"), 7 => ("Prime: 19", "Position: 8"), 13 => ("Prime: 6199", "Position: 806"), 15 => ("Prime: 41813", "Position: 4372"), 10 => ("Prime: 269", "Position: 57"), 18 => ("Prime: 112543", "Position: 10665"))
+Test concluded.
+Time taken: 761.94 seconds.
+
+Cleaner view:
+~12.5min
+n   |   Prime   |   Position
+============================
+7   |   19      |   8
+8   |   41      |   13
+9   |   103     |   27
+10  |   269     |   57
+11  |   739     |   131
+12  |   2203    |   328
+13  |   6199    |   806
+14  |   17761   |   2039
+15  |   41813   |   4372
+16  |   67957   |   6769
+17  |   97861   |   9407
+18  |   112543  |   10665
+19  |   101837  |   9751
+20  |   106013  |   10107
+
+~3.5min
+n   |   Prime   |   Position
+============================
+7   |   19      |   8
+8   |   41      |   13
+9   |   103     |   27
+10  |   269     |   57
+11  |   739     |   131
+12  |   2141    |   323
+13  |   6547    |   845
+14  |   18143   |   2080
+15  |   39719   |   4175
+16  |   68729   |   6831
+17  |   104207  |   9953
+18  |   88261   |   8561
+19  |   98257   |   9436
+20  |   113657  |   10761
+
+~5 hours
+n   |   Prime   |   Position    |   Total (Theoretical) Primes
+==============================================================
+7   |   19      |   8           |   11
+8   |   41      |   13          |   16
+9   |   103     |   27          |   34
+10  |   269     |   57          |   66
+11  |   739     |   131         |   231
+12  |   2203    |   328         |   510
+13  |   6863    |   883         |   1174
+14  |   21023   |   2366        |   2810
+15  |   63841   |   6403        |   12251
+16  |   173699  |   15807       |   28223
+17  |   467021  |   38987       |   86756
+18  |   822431  |   65601       |   244359
+19  |   1027097 |   80493       |   1242694
+20  |   1282739 |   98808       |   3374211
+
+
+max_determinants = Dict(
+    1 => 1,
+    2 => 1,
+    3 => 2,
+    4 => 3,
+    5 => 5,
+    6 => 9,
+    7 => 32,
+    8 => 56,
+    9 => 144,
+    10 => 320,
+    11 => 1458,
+    12 => 3645,
+    13 => 9477,
+    14 => 25515,
+    15 => 131072,
+    16 => 327680,
+    17 => 1114112,
+    18 => 3411968,
+    19 => 19531250,
+    20 => 56640625,
+    21 => 195312500,
+    22 => 967396000,
+)
+
+
+Available Threads: 20
+Threads in use: 20
+Core 4 is starting prime analysis for 14 x 14 case...
+Core 10 is starting prime analysis for 16 x 16 case...
+Core 14 is starting prime analysis for 12 x 12 case...
+Core 21 is starting prime analysis for 6 x 6 case...
+Core 17 is starting prime analysis for 3 x 3 case...
+Core 12 is starting prime analysis for 20 x 20 case...
+Core 9 is starting prime analysis for 9 x 9 case...
+Core 5 is starting prime analysis for 11 x 11 case...
+Core 2 is starting prime analysis for 15 x 15 case...
+Core 11 is starting prime analysis for 4 x 4 case...
+Core 16 is starting prime analysis for 2 x 2 case...
+Core 18 is starting prime analysis for 19 x 19 case...
+Core 19 is starting prime analysis for 18 x 18 case...
+Core 6 is starting prime analysis for 1 x 1 case...
+Core 8 is starting prime analysis for 17 x 17 case...
+Core 15 is starting prime analysis for 7 x 7 case...
+Core 20 is starting prime analysis for 8 x 8 case...
+Core 3 is starting prime analysis for 10 x 10 case...
+Core 7 is starting prime analysis for 5 x 5 case...
+Core 13 is starting prime analysis for 13 x 13 case...
+Core 3 found first failure for 10 at Prime: 269 (Pos: 57).
+Core 9 found first failure for 9 at Prime: 103 (Pos: 27).
+Core 14 found first failure for 12 at Prime: 2203 (Pos: 328).
+Core 20 found first failure for 8 at Prime: 41 (Pos: 13).
+Core 15 found first failure for 7 at Prime: 19 (Pos: 8).
+Core 5 found first failure for 11 at Prime: 739 (Pos: 131).
+Core 13 found first failure for 13 at Prime: 6863 (Pos: 883).
+Core 4 found first failure for 14 at Prime: 21023 (Pos: 2366).
+Core 2 found first failure for 15 at Prime: 63841 (Pos: 6403).
+Core 10 found first failure for 16 at Prime: 173699 (Pos: 15807).
+Core 8 found first failure for 17 at Prime: 467021 (Pos: 38987).
+Core 19 found first failure for 18 at Prime: 822431 (Pos: 65601).
+Core 18 found first failure for 19 at Prime: 1027097 (Pos: 80493).
+Core 12 found first failure for 20 at Prime: 1282739 (Pos: 98808).
+Dict(16 => ("Prime: 173699", "Position: 15807"), 20 => ("Prime: 1282739", "Position: 98808"), 12 => ("Prime: 2203", "Position: 328"), 8 => ("Prime: 41", "Position: 13"), 17 => ("Prime: 467021", "Position: 38987"), 19 => ("Prime: 1027097", "Position: 80493"), 11 => ("Prime: 739", "Position: 131"), 9 => ("Prime: 103", "Position: 27"), 14 => ("Prime: 21023", "Position: 2366"), 7 => ("Prime: 19", "Position: 8"), 13 => ("Prime: 6863", "Position: 883"), 15 => ("Prime: 63841", "Position: 6403"), 10 => ("Prime: 269", "Position: 57"), 18 => ("Prime: 822431", "Position: 65601"))
+Test concluded.
+Time taken: 17530.6890001297 seconds.
