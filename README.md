@@ -1,6 +1,8 @@
 # Zero-One-Matrix-Optimization
 Julia implementation for Hill Climbing and Targeted Search algorithms on Zero One Matrix Determinants
 
+Made, used, and maintained using the Julia extension inside of Visual Studio Code (Recommended)
+
 ## Dependencies
 
 Refer to .toml files for dependencies/requirements. Utilize Julia PKG for ease of handling this. Some methods below:
