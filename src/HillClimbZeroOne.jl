@@ -437,7 +437,7 @@ function simulate_climb(config::ClimbConfig)
                 thread_space = workspaces[thread]
                 thread_id = Threads.threadid()
                 println("Core $thread_id starting new search on a $n_size x $n_size Matrix.")
-                thread_trials = div(t_trials, thread_count)
+                thread_trials = cld(t_trials, thread_count)
                 chunk_results[thread] = _hill_climb(config, thread_trials, thread_space; _cancel_flag=c_flag)
             end
 
