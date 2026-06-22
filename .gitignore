@@ -27,5 +27,5 @@ Manifest*.toml
 LocalPreferences.toml
 JuliaLocalPreferences.toml
 
-# Results file
+# Results directory
 /results/
