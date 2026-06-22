@@ -52,6 +52,16 @@ end
 
 # Calculate gradient (change in determinant)
 function matrix_gradient(A::Matrix{Int}, current_det::Real, ws::Workspace{T, F}, tabu_max::Int) where {T, F}
+    """
+    Computes gradient of a given matrix, which is used to find the change in determinant for a given matrix
+    at every position. In other words, how does each "bit flip" (0->1 or 1->0) affect the value?
+
+    Takes:
+        A::Matrix{Int}      # Current matrix state.
+        current_det::Real   # Tracks current determinant for memory allocation purposes.
+        ws::Workspace{T, F} # Contains other trackers for memory allocation purposes.
+        tabu_max::Int       # Passed through the shuffling process as necessary to maintain Tabu structure.
+    """
     (; gradient, A_precise, A_inv, I_mat, tabu_mat, tabu_order_queue) = ws
     n = size(A, 1)
 	d = current_det
@@ -98,6 +108,18 @@ end
 
 
 function shuffle_bits(A::Matrix{Int}, n::Int, shakes::Int, tabu_mat::BitMatrix, tabu_order_queue::Vector{Tuple{Int,Int}}, tabu_max::Int)
+    """
+    Used to shuffle the values inside a matrix by flipping some number of bits.
+    Used in matrix_gradient() and when using seed matrices in _hill_climb().
+    
+    Takes:
+        A::Matrix{Int}                              # Current matrix state.
+        n::Int                                      # Dimension of nxn Matrix.
+        shakes::Int                                 # Used to determine number of bits to flip.
+        tabu_mat::BitMatrix                         # Used to maintain Tabu structure and updates.
+        tabu_order_queue::Vector{Tuple{Int,Int}}    # Used to maintain Tabu structure and updates.
+        tabu_max::Int                               # Used to maintain Tabu structure and updates.
+    """
     for _ in 1:shakes
         i, j = rand(1:n), rand(1:n)
         A[i, j] = 1 - A[i, j]
@@ -118,6 +140,17 @@ end
 
 # Determine best move to increase determinant
 function _best_change(A::Matrix{Int}, tabu_mat::BitMatrix, gradient::Matrix{T}, current_det::Real, best_det::Real) where {T<:Integer}
+    """
+    Used to identify the best move to make given a certain matrix. Utilizes the Tabu structure to avoid
+    cycles. Will return the best move or one that is not in the Tabu memory.
+
+    Takes:
+        A::Matrix{Int}          # Current matrix state.
+        tabu_mat::BitMatrix     # Used to maintain Tabu structure and updates.
+        gradient::Matrix{T}     # Gradient matrix to determine the "delta" values used in comparisons.
+        current_det::Real       # For tracking the value of moves against the best record.
+        best_det::Real          # For storing the best record for comparisons.
+    """
     n = size(A, 1)
     best_move = (row = 0, col = 0)
     best_delta = -Inf
@@ -153,6 +186,17 @@ end
 # Primary internal loop used per trial
 # Performed once per climb
 function _climb_up(A::Matrix{Int}, config::ClimbConfig, ws::Workspace{T, F}, current_det::Real, best_det::Real; _cancel_flag) where {T<:Integer, F<:AbstractFloat}
+    """
+    The primary function that is used per trial. Conducts all of the climbs made in each trial. 
+    Manages finding the best move, updating Tabu, and performing the climbs.
+
+    Takes:
+        A::Matrix{Int}          # Current matrix state.
+        config::ClimbConfig     # Contains program parameters.
+        ws::Workspace{T, F}     # Contains other trackers for memory allocation purposes.
+        current_det::Real       # Tracks current matrix determinant.
+        best_det::Real          # Tracks best determinant reached.
+    """
     (; gradient, A_precise, A_inv, I_mat, tabu_mat, tabu_order_queue) = ws
     (; n_size, c_climbs, tabu_max, seed, verbose) = config
 
@@ -187,6 +231,14 @@ end
 # Main climbing loop to perform many trials
 # Called once to initiate sampling/simulation
 function _hill_climb(config::ClimbConfig, t_trials::Int, ws::Workspace{T, F}; _cancel_flag) where {T<:Integer, F<:AbstractFloat}
+    """
+    Primary loop to handle all trials. Manages all parameter and tracking variables. Also contains the only verbosity.
+
+    Takes:
+        config::ClimbConfig     # Contains program parameters.
+        t_trials::Int           # Indicates numebr of trials (also in config, but redundant for differing multithreaded parameter).
+        ws::Workspace{T, F}     # Contains other trackers for memory allocation purposes.
+    """
     # Structural Setup
     # unpack config and workspace
     (; gradient, A_precise, A_inv, I_mat, tabu_mat, tabu_order_queue) = ws
@@ -296,6 +348,10 @@ end
 
 
 function _io_output(config, best_mat, final_time)
+    """
+    Produces a text file similar to the overall console output from the rest of the program.
+    Collects and summarizes important details as can be seen in the print statements below.
+    """
     (; n_size, c_climbs, t_trials, tabu_max, seed, verbose, parallel, thread_count, output) = config
     timestamp = round(BigInt, time())
     mkpath(joinpath(@__DIR__, "..", "results"))
@@ -324,6 +380,23 @@ end
 
 # Primary wrapper function for simple / intuitive use
 function simulate_climb(config::ClimbConfig)
+    """
+    The main function and intended interface for users. Takes in a configuration object containing 
+    the following example structure:
+
+    	my_config = ClimbConfig(
+		n_size = 22,			# n x n matrix.
+		c_climbs = 30000,		# Max climbs per trial.
+		t_trials = 100,		    # Total trials (random starts). Distributed if parallel.
+		tabu_max = 30,			# Max memory for tabu list.
+		parallel = false,       # Boolean to determine thread mode.
+		verbose = true,         # Boolean to determine extent of console output.
+		seed = nothing,         # Can take a matrix as a seed (shuffled slightly) instead of random per trial.
+		thread_count = 0,       # Determines the number of threads to use. Enter 0 to automatically determine.
+		output = true           # Boolean to determine whether to output a results file.
+	)
+
+    """
     (; n_size, c_climbs, t_trials, tabu_max, seed, verbose, parallel, thread_count, output) = config
     
     # For memory purposes. 
