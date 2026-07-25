@@ -325,6 +325,12 @@ function _target_climb(config::TargetConfig, t_trials::Int, ws::Workspace{T, F};
                 end
 
                 count = c 
+                
+                if current_proximity == 0
+                    _cancel_flag[] = true
+                    break
+                end
+            
             end 
 
             # Max climb tracker (for testing mostly)
